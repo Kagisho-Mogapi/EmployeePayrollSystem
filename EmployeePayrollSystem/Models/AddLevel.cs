@@ -14,15 +14,15 @@ namespace EmployeePayrollSystem.Models
         [Display(Name = "Percentage Increase")]
         public double YearlySalaryIncreasePercentage { get; set; }
 
-        [Display(Name = "Travel Allowance")]
+        [Display(Name = "T_Allowance")]
         public double TravelAllowance { get; set; }
 
 
-        [Display(Name = "Medical Allowance")]
+        [Display(Name = "M_Allowance")]
         public double MedicalAllowance { get; set; }
 
 
-        [Display(Name = "Internet Allowance")]
+        [Display(Name = "I_Allowance")]
         public double InternetAllowance { get; set; }
 
     }

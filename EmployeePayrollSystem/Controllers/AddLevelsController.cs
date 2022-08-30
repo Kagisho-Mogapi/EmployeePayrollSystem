@@ -46,7 +46,7 @@ namespace EmployeePayrollSystem.Controllers
         }
 
         // GET: AddLevels/Create
-        public IActionResult Create()
+        public IActionResult _Create()
         {
             return View();
         }
@@ -56,15 +56,24 @@ namespace EmployeePayrollSystem.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,LevelName,Salary,YearlySalaryIncreasePercentage,TravelAllowance,MedicalAllowance,InternetAllowance")] AddLevel addLevel)
+        public async Task<IActionResult> _Create([Bind("ID,LevelName,Salary,YearlySalaryIncreasePercentage,TravelAllowance,MedicalAllowance,InternetAllowance")] AddLevel addLevel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(addLevel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                if(_context.AddLevel!.Any(e => e.LevelName == addLevel.LevelName))
+                {
+                    ModelState.AddModelError("", "Level already Exist");
+                }
+                else
+                {
+                    _context.Add(addLevel);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+
             }
-            return View(addLevel);
+            return View("Index", await _context.AddLevel!.ToListAsync());
         }
 
         // GET: AddLevels/Edit/5
