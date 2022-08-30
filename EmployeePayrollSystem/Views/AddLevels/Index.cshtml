@@ -1,0 +1,71 @@
+﻿@model IEnumerable<EmployeePayrollSystem.Models.AddLevel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Create Level</h1>
+
+<partial name="_Create" model="new EmployeePayrollSystem.Models.AddLevel()"/>
+
+<h1>Levels Added</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LevelName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearlySalaryIncreasePercentage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TravelAllowance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MedicalAllowance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InternetAllowance)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LevelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearlySalaryIncreasePercentage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TravelAllowance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedicalAllowance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InternetAllowance)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

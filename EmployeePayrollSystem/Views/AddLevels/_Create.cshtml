@@ -1,0 +1,47 @@
+﻿@model EmployeePayrollSystem.Models.AddLevel
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LevelName" class="control-label"></label>
+                <input asp-for="LevelName" class="form-control" />
+                <span asp-validation-for="LevelName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Salary" class="control-label"></label>
+                <input asp-for="Salary" class="form-control" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearlySalaryIncreasePercentage" class="control-label"></label>
+                <input asp-for="YearlySalaryIncreasePercentage" class="form-control" />
+                <span asp-validation-for="YearlySalaryIncreasePercentage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TravelAllowance" class="control-label"></label>
+                <input asp-for="TravelAllowance" class="form-control" />
+                <span asp-validation-for="TravelAllowance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MedicalAllowance" class="control-label"></label>
+                <input asp-for="MedicalAllowance" class="form-control" />
+                <span asp-validation-for="MedicalAllowance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InternetAllowance" class="control-label"></label>
+                <input asp-for="InternetAllowance" class="form-control" />
+                <span asp-validation-for="InternetAllowance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
