@@ -31,7 +31,7 @@ namespace EmployeePayrollSystem.Models
         [Display(Name = "Department")]
         public string Department { get; set; }
 
-        [Display(Name = "Level Name")]
+        [Display(Name = "Role Name")]
         [ForeignKey("RoleName")]
         public string RoleName { get; set; }
 
@@ -45,12 +45,20 @@ namespace EmployeePayrollSystem.Models
         public string BankAccount { get; set; }
 
         [Display(Name = "Email")]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Display(Name = "Password")]
+        [DataType(DataType.Password)]
+        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{8,}$", 
+            ErrorMessage = "Password should have at least one: lower case, upper case, number and special character" )]
         public string Password { get; set; }
 
         [Display(Name = "Confirm Password")]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{8,}$",
+            ErrorMessage = "Password should have at least one: lower case, upper case, number and special character")]
         public string ConfirmPassword { get; set; }
 
 

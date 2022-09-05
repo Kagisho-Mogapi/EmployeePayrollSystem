@@ -18,17 +18,22 @@
 
                 <div class="form-group">
                     <label asp-for="FullName" class="control-label"></label>
-                    <input asp-for="FullName" class="form-control" />
+                    <input asp-for="FullName" autocomplete="fullname" class="form-control" />
                     <span asp-validation-for="FullName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
+                    <label asp-for="Address" class="control-label"></label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
                     <label asp-for="City" class="control-label"></label>
-                    <input asp-for="City" class="form-control" />
+                    <input asp-for="City" autocomplete="city" class="form-control" />
                     <span asp-validation-for="City" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Pincode" class="control-label"></label>
-                    <input asp-for="Pincode" class="form-control" />
+                    <input asp-for="Pincode" autocomplete="pincode" class="form-control" />
                     <span asp-validation-for="Pincode" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -38,7 +43,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Qualification" class="control-label"></label>
-                    <input asp-for="Qualification" class="form-control" />
+                    <input asp-for="Qualification" autocomplete="qualification" class="form-control" />
                     <span asp-validation-for="Qualification" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -56,7 +61,7 @@
             <div class="two_column">
                 <div class="form-group">
                     <label asp-for="RoleName" class="control-label"></label>
-                    <input asp-for="RoleName" class="form-control" />
+                    <select asp-for="RoleName" class="form-control" asp-items="@ViewBag.levels"></select>
                     <span asp-validation-for="RoleName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -80,7 +85,7 @@
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Password" class="control-label"></label>
+                    <label asp-for="Password" autocomplete="password" class="control-label"></label>
                     <input asp-for="Password" class="form-control" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
