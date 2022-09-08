@@ -26,6 +26,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<EmployeePayrollSystem.Models.AddLevel>? AddLevel { get; set; }
 
     public DbSet<EmployeePayrollSystem.Models.AddEmployee>? AddEmployee { get; set; }
+
+    public DbSet<EmployeePayrollSystem.Models.ApplyForLeave>? ApplyForLeave { get; set; }
 }
 
 public class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<ApplicationUser>
