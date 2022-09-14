@@ -166,5 +166,47 @@ namespace EmployeePayrollSystem.Controllers
         {
           return (_context.ApplyForLeave?.Any(e => e.ID == id)).GetValueOrDefault();
         }
+
+        public async Task<IActionResult> LeaveApprove(int? id)
+        {
+            if (_context.ApplyForLeave == null || id == null)
+            {
+                return Problem("Entity set 'ApplicationDbContext.ApplyForLeave' or id is null.");
+            }
+            var applyForLeave = await _context.ApplyForLeave.FindAsync(id);
+            if (applyForLeave != null)
+            {
+                applyForLeave.Status = "Approved";
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        public async Task<IActionResult> LeaveDeny(int? id)
+        {
+            if (_context.ApplyForLeave == null || id == null)
+            {
+                return Problem("Entity set 'ApplicationDbContext.ApplyForLeave' or id is null.");
+            }
+            var applyForLeave = await _context.ApplyForLeave.FindAsync(id);
+            if (applyForLeave != null)
+            {
+                applyForLeave.Status = "Denied";
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        // GET: MyLeaves
+        public async Task<IActionResult> MyLeaves()
+        {
+            var currentUser = await _userManager.GetUserAsync(User);
+
+            return _context.ApplyForLeave != null ?
+                        View( _context.ApplyForLeave.Where(a=>a.ApplicantID == currentUser.FirstName + " " + currentUser.LastName)) :
+                        Problem("Entity set 'ApplicationDbContext.ApplyForLeave'  is null.");
+        }
     }
 }
